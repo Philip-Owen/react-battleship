@@ -1,8 +1,8 @@
 export function createGrid() {
 	let grid = [];
-	for (let i = 0; i < 11; i++) {
+	for (let i = 0; i < 10; i++) {
 		let row = [];
-		for (let j = 0; j < 11; j++) {
+		for (let j = 0; j < 10; j++) {
 			row.push(0);
 		}
 		grid.push(row);
@@ -23,14 +23,14 @@ function placeShips(board) {
 		const { len } = getShip(ship);
 		const direction = Math.ceil(Math.random() * 6) % 2 === 0 ? 'vertical' : 'horizontal';
 
-		let row = Math.floor(Math.random() * 11);
-		let col = Math.floor(Math.random() * 11);
+		let row = Math.floor(Math.random() * 10);
+		let col = Math.floor(Math.random() * 10);
 
 		var coords = checkShipFitsBoard(col, row, direction, len);
 
 		while (!checkSpaceIsOpen(coords.col, coords.row, direction, len, board)) {
-			let row = Math.floor(Math.random() * 11);
-			let col = Math.floor(Math.random() * 11);
+			let row = Math.floor(Math.random() * 10);
+			let col = Math.floor(Math.random() * 10);
 			coords = checkShipFitsBoard(col, row, direction, len);
 		}
 
@@ -61,14 +61,14 @@ function checkShipFitsBoard(col, row, direction, len) {
 	const coords = { col, row };
 
 	if (direction === 'vertical') {
-		while (coords.row + len > 11) {
-			coords.row = Math.floor(Math.random() * 11);
+		while (coords.row + len > 10) {
+			coords.row = Math.floor(Math.random() * 10);
 		}
 	}
 
 	if (direction === 'horizontal') {
-		while (coords.col + len > 11) {
-			coords.col = Math.floor(Math.random() * 11);
+		while (coords.col + len > 10) {
+			coords.col = Math.floor(Math.random() * 10);
 		}
 	}
 	return coords;
