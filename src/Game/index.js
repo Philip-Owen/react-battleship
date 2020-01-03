@@ -108,3 +108,114 @@ function getShip(ship) {
 			return;
 	}
 }
+
+export function playerFire([col, row], board, ships) {
+	let turn = {};
+	if (board[row][col] === 0) {
+		turn.shot = 'M';
+		turn.log = createLog('Player', [col, row], 'Miss', null);
+	} else {
+		let ship = null;
+		let sunk = ships.sunk;
+		turn.shot = 'H';
+		ships[board[row][col]].hits++;
+		const { name, len, hits } = ships[board[row][col]];
+		if (hits >= len) {
+			ship = name;
+			sunk = [...ships.sunk, name];
+		}
+		turn = {
+			shot: 'H',
+			ships: { ...ships, sunk: sunk },
+			log: createLog('Player', [col, row], 'Hit', ship),
+			...(sunk.length === 5 ? { gameEnd: true, winner: 'Player' } : {}),
+		};
+	}
+	return turn;
+}
+
+export function shipTracker() {
+	return {
+		P: {
+			name: 'Patrol Boat',
+			len: 2,
+			hits: 0,
+		},
+		D: {
+			name: 'Destroyer',
+			len: 3,
+			hits: 0,
+		},
+		S: {
+			name: 'Submarine',
+			len: 3,
+			hits: 0,
+		},
+		B: {
+			name: 'Battleship',
+			len: 4,
+			hits: 0,
+		},
+		C: {
+			name: 'Carrier',
+			len: 5,
+			hits: 0,
+		},
+		sunk: [],
+	};
+}
+
+function createLog(player, [col, row], turn, ship) {
+	return {
+		player: player,
+		col: convertColCharacter(col),
+		row: row + 1,
+		turn: turn,
+		...(ship ? { ship: ship } : {}),
+	};
+}
+
+function convertColCharacter(col) {
+	const cols = ['A', 'B', 'C', 'D', 'E', 'F', 'H', 'I', 'J', 'K'];
+	return cols[col];
+}
+
+export function generateComputerTurns() {
+	const grid = createGrid();
+	const moves = [];
+	grid.map((row, i) => row.map((col, j) => moves.push(`${j}-${i}`)));
+	return moves;
+}
+
+export function computerFire(moves, ships, board) {
+	const randomPosition = Math.floor(Math.random() * moves.length);
+	const coords = moves[randomPosition].split('-');
+	const col = parseInt(coords[0]);
+	const row = parseInt(coords[1]);
+
+	let turn = {};
+
+	if (board[row][col] === 0) {
+		turn.log = createLog('Computer', [col, row], 'Miss', null);
+	} else {
+		let ship = null;
+		let sunk = ships.sunk;
+		turn.shot = 'H';
+		ships[board[row][col]].hits++;
+		const { name, len, hits } = ships[board[row][col]];
+		if (hits >= len) {
+			ship = name;
+			sunk = [...ships.sunk, name];
+		}
+		turn = {
+			shot: 'H',
+			ships: { ...ships, sunk: sunk },
+			log: createLog('Computer', [col, row], 'Hit', ship),
+			col: col,
+			row: row,
+			...(sunk.length === 5 ? { gameEnd: true } : {}),
+		};
+	}
+	turn.moves = moves.filter((move, i) => i !== randomPosition);
+	return turn;
+}

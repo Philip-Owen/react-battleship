@@ -3,27 +3,25 @@ import { connect } from 'react-redux';
 
 import GridHeader from './GridHeader';
 import GridSide from './GridSide';
+import GridItem from './GridItem';
 
-function Grid({ playerBoard }) {
+function Grid({ gameBoard }) {
 	return (
 		<div className="grid">
 			<GridHeader />
 			<div className="grid-container">
 				<GridSide />
 				<div className="col">
-					{playerBoard.map((row, i) => {
+					{gameBoard.map((row, i) => {
 						return (
 							<div className="row" key={`row-${i}`}>
 								{row.map((col, j) => (
-									<span
-										data-target={`${j}-${i}`}
+									<GridItem
+										coords={`${j}-${i}`}
+										char={col}
 										key={`row-${j}-${i}`}
-										className={`${col === 0 ? 'row-item' : 'row-item ship'} ${
-											col === 'H' ? 'hit' : null
-										}`}
-									>
-										{col === 0 ? 'o' : col}
-									</span>
+										className={col === 0 ? 'row-item' : 'row-item ship'}
+									/>
 								))}
 							</div>
 						);
@@ -35,7 +33,7 @@ function Grid({ playerBoard }) {
 }
 
 const mapStateToProps = state => ({
-	playerBoard: state.playerBoard,
+	gameBoard: state.gameBoard,
 });
 
 export default connect(mapStateToProps)(Grid);

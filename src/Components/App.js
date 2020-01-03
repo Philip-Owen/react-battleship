@@ -1,8 +1,11 @@
 import React from 'react';
 
-import Grid from './Grid/Grid';
 import Controls from './Controls';
+import Grid from './Grid/Grid';
+import GameBoard from './Grid/GameBoard';
+import GameLog from './GameLog';
 import './App.css';
+import SunkLog from './SunkLog';
 
 function App() {
 	return (
@@ -11,6 +14,11 @@ function App() {
 			<Controls />
 			<div style={{ display: 'flex', justifyContent: 'space-between' }}>
 				<Grid />
+				<GameBoard />
+			</div>
+			<div className="game-info">
+				<GameLog />
+				<SunkLog />
 			</div>
 		</div>
 	);
