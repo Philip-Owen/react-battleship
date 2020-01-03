@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/react-battleship/static/css/main.ea160cce.chunk.css",
+    "main.js": "/react-battleship/static/js/main.9467b5a9.chunk.js",
+    "main.js.map": "/react-battleship/static/js/main.9467b5a9.chunk.js.map",
+    "runtime-main.js": "/react-battleship/static/js/runtime-main.e2892791.js",
+    "runtime-main.js.map": "/react-battleship/static/js/runtime-main.e2892791.js.map",
+    "static/js/2.74a0e9f1.chunk.js": "/react-battleship/static/js/2.74a0e9f1.chunk.js",
+    "static/js/2.74a0e9f1.chunk.js.map": "/react-battleship/static/js/2.74a0e9f1.chunk.js.map",
+    "index.html": "/react-battleship/index.html",
+    "precache-manifest.5a706ab7fa8973b6207905242339c44e.js": "/react-battleship/precache-manifest.5a706ab7fa8973b6207905242339c44e.js",
+    "service-worker.js": "/react-battleship/service-worker.js",
+    "static/css/main.ea160cce.chunk.css.map": "/react-battleship/static/css/main.ea160cce.chunk.css.map",
+    "static/js/2.74a0e9f1.chunk.js.LICENSE": "/react-battleship/static/js/2.74a0e9f1.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e2892791.js",
+    "static/js/2.74a0e9f1.chunk.js",
+    "static/css/main.ea160cce.chunk.css",
+    "static/js/main.9467b5a9.chunk.js"
+  ]
+}
