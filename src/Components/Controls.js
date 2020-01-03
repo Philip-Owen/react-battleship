@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 function Controls({ generateBoard, startGame, acceptPlacement, endGame, gameEnd, winner }) {
 	return (
-		<div>
+		<div className="game-controls">
 			{!startGame ? (
 				<>
 					<button onClick={() => generateBoard(true)}>Generate Board</button>

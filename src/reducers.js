@@ -58,7 +58,21 @@ function reducers(state = initialState, action) {
 		case 'PLAYER_TURN':
 			return { ...state, playerTurn: !state.playerTurn };
 		case 'END_GAME':
-			return initialState;
+			return {
+				playerBoard: createGrid(),
+				computerBoard: placeShipsOnBoard(),
+				gameBoard: createGrid(),
+				computerMoves: generateComputerTurns(),
+				gameLog: [],
+				gameStarted: false,
+				playerShips: shipTracker(),
+				computerShips: shipTracker(),
+				playerSunk: [],
+				computerSunk: [],
+				playerTurn: true,
+				gameEnd: false,
+				winner: '',
+			};
 		default:
 			return state;
 	}

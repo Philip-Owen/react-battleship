@@ -10,15 +10,19 @@ import SunkLog from './SunkLog';
 function App() {
 	return (
 		<div className="App">
-			<h1>React/Redux Battleship</h1>
-			<Controls />
-			<div style={{ display: 'flex', justifyContent: 'space-between' }}>
-				<Grid />
-				<GameBoard />
+			<div className="title">
+				<h1>React Battleship</h1>
+				<Controls />
 			</div>
-			<div className="game-info">
-				<GameLog />
-				<SunkLog />
+			<div className="board-layout">
+				<div>
+					<Grid />
+					<GameLog />
+				</div>
+				<div>
+					<GameBoard />
+					<SunkLog />
+				</div>
 			</div>
 		</div>
 	);
