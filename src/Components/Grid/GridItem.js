@@ -16,7 +16,7 @@ function GridItem({ coords, char, playerFire, playerTurn, endPlayerTurn, compute
 			playerFire(coordsArray.map(num => parseInt(num)));
 			setTimeout(() => {
 				computerFire();
-			}, 1);
+			}, 1500);
 		}
 	};
 	return (

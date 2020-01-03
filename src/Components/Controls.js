@@ -1,17 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-function Controls({ generateBoard, accepted, acceptPlacement, endGame, gameEnd, winner }) {
+function Controls({ generateBoard, startGame, acceptPlacement, endGame, gameEnd, winner }) {
 	return (
 		<div>
-			{!accepted ? (
+			{!startGame ? (
 				<>
 					<button onClick={() => generateBoard(true)}>Generate Board</button>
-					<button onClick={() => acceptPlacement()}>Accept Placement</button>
+					<button onClick={() => acceptPlacement()}>Start Game</button>
 				</>
 			) : null}
 			{gameEnd ? <h2>Game Over! {winner} Wins!</h2> : null}
-			{accepted ? <button onClick={() => endGame()}>End Game</button> : ''}
+			{startGame ? <button onClick={() => endGame()}>End Game</button> : ''}
 		</div>
 	);
 }
@@ -23,7 +23,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-	accepted: state.placementAccepted,
+	startGame: state.gameStarted,
 	gameEnd: state.gameEnd,
 	winner: state.winner,
 });

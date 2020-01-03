@@ -54,7 +54,7 @@ function reducers(state = initialState, action) {
 				...(compTurn.gameEnd ? { gameEnd: true, winner: 'Computer', playerTurn: false } : {}),
 			};
 		case 'ACCEPT_SHIP_PLACEMENT':
-			return { ...state, placementAccepted: true };
+			return { ...state, gameStarted: true };
 		case 'PLAYER_TURN':
 			return { ...state, playerTurn: !state.playerTurn };
 		case 'END_GAME':
