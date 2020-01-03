@@ -92,3 +92,8 @@
 .sunk-log > h3 {
 	margin-bottom: 0;
 }
+
+.notes {
+	text-align: left;
+	padding: 0 30px;
+}

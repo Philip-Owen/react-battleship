@@ -15,6 +15,7 @@ const initialState = {
 	playerTurn: true,
 	gameEnd: false,
 	winner: '',
+	notes: true,
 };
 
 function reducers(state = initialState, action) {
@@ -57,6 +58,8 @@ function reducers(state = initialState, action) {
 			return { ...state, gameStarted: true };
 		case 'PLAYER_TURN':
 			return { ...state, playerTurn: !state.playerTurn };
+		case 'HIDE_NOTES':
+			return { ...state, notes: !state.notes };
 		case 'END_GAME':
 			return {
 				playerBoard: createGrid(),
@@ -72,6 +75,7 @@ function reducers(state = initialState, action) {
 				playerTurn: true,
 				gameEnd: false,
 				winner: '',
+				notes: state.notes,
 			};
 		default:
 			return state;
